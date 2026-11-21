@@ -6,19 +6,28 @@ import { Film, Sparkles, ShieldCheck, Star } from 'lucide-react';
  *    перенесення переможця у список «Переглянуто» та керування учасниками.
  * 3. Маршрутизація між головним екраном (HeroBanner + RoomsDashboard) та робочим простором (RoomWorkspace).
  */
-
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroBanner from './components/HeroBanner';
 import MovieShowcase from './components/MovieShowcase';
+import AuthModal from './components/AuthModal';
 
 export default function App() {
+  const [authMode, setAuthMode] = useState(null);
+
   return (
     <div className="app-shell">
-      <Navbar />
+      <Navbar onOpenAuth={setAuthMode} />
       <main>
         <HeroBanner />
         <MovieShowcase />
       </main>
+
+      <AuthModal
+        mode={authMode}
+        onSwitchMode={setAuthMode}
+        onClose={() => setAuthMode(null)}
+      />
     </div>
   );
 }
