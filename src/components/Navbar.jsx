@@ -5,7 +5,7 @@
  * 3. Індикатор активної JWT-сесії, кнопка входу/виходу та швидкий доступ до панелі модерації для суперадміна.
  */
 
-import { Film, LogIn, Shield } from 'lucide-react';
+import { Film, LogIn, UserPlus } from 'lucide-react';
 
 export default function Navbar() {
   return (
@@ -20,21 +20,15 @@ export default function Navbar() {
           </span>
         </a>
 
-        <div className="navbar-actions">
-          <div className="user-pill">
-            <span className="user-avatar">КІ</span>
-            <span className="user-name">Крістіна Іваненко</span>
-            <span className="user-role-tag">Адмін кімнати</span>
-          </div>
-
+        <div className="navbar-auth-group">
           <button type="button" className="btn-ghost">
-            <Shield size={15} />
-            <span>Модерація</span>
+            <UserPlus size={15} />
+            <span>Увійти</span>
           </button>
 
-          <button type="button" className="btn-ghost">
-            <LogIn size={15} />
-            <span>Увійти</span>
+          <button type="button" className="btn-register">
+            <UserPlus size={15} />
+            <span>Зареєструватися</span>
           </button>
         </div>
       </div>
