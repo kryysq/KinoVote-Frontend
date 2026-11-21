@@ -1,111 +1,149 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --bg-main: #09090b;
+    --bg-card: #121216;
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --accent-rose: #e11d48;
+    --accent-amber: #f59e0b;
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-[#09090b] text-zinc-100 antialiased selection:bg-rose-600 selection:text-white;
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
   }
 }
 
-body {
-  margin: 0;
-}
+@layer components {
+  /* Скляні панелі та картки з обводками */
+  .glass-panel {
+    @apply bg-zinc-900/75 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+  .cinema-card {
+    @apply rounded-2xl border border-white/10 bg-zinc-900/75 transition-all duration-300;
+  }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+  .cinema-card:hover {
+    @apply border-rose-500/40;
+    box-shadow: 0 0 25px -5px rgba(225, 29, 72, 0.35);
+  }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  .subtle-outline {
+    @apply border border-white/10 bg-white/[0.03] transition-colors;
+  }
+
+  .subtle-outline:focus-within {
+    @apply border-rose-500/60;
+  }
+
+  /* Семантичні кнопки та бейджі */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-rose-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-rose-500 disabled:opacity-50;
+    box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.35);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/20;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1 rounded-md border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 text-xs font-bold text-amber-300;
+  }
+
+  /* Градієнти для Streaming Hero */
+  .hero-gradient {
+    background: linear-gradient(
+      to top,
+      #09090b 5%,
+      rgba(9, 9, 11, 0.85) 35%,
+      rgba(9, 9, 11, 0.45) 70%,
+      rgba(9, 9, 11, 0.85) 100%
+    );
+  }
+
+  .hero-side-gradient {
+    background: linear-gradient(
+      to right,
+      #09090b 10%,
+      rgba(9, 9, 11, 0.75) 45%,
+      rgba(9, 9, 11, 0.15) 100%
+    );
+  }
+
+  /* Тестовий екран перевірки теми */
+  .preview-layout {
+    @apply flex min-h-screen items-center justify-center p-6;
+  }
+
+  .preview-box {
+    @apply glass-panel w-full max-w-md rounded-3xl p-8;
+  }
+
+  .preview-header {
+    @apply flex items-center gap-3;
+  }
+
+  .brand-icon-box {
+    @apply flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-rose-600 to-amber-500 text-white;
+    box-shadow: 0 0 25px -5px rgba(225, 29, 72, 0.4);
+  }
+
+  .brand-title {
+    @apply text-2xl font-extrabold tracking-tight text-white;
+  }
+
+  .brand-accent {
+    @apply text-rose-500;
+  }
+
+  .brand-subtitle {
+    @apply text-xs text-zinc-400;
+  }
+
+  .preview-card {
+    @apply cinema-card mt-6 p-4;
+  }
+
+  .preview-card-top {
+    @apply flex items-center justify-between text-xs;
+  }
+
+  .preview-card-label {
+    @apply inline-flex items-center gap-1.5 font-semibold text-amber-300;
+  }
+
+  .preview-card-text {
+    @apply mt-2 text-xs leading-relaxed text-zinc-400;
+  }
+
+  .preview-status {
+    @apply subtle-outline mt-4 flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-xs text-emerald-400;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+
+/* Кастомний темний скролбар */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+::-webkit-scrollbar-track {
+  background: #09090b;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }

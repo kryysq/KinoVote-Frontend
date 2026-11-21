@@ -1,3 +1,4 @@
+import { Film, Sparkles, ShieldCheck, Star } from 'lucide-react';
 /**
  * Що тут буде:
  * 1. Головний контейнер стану застосунку (поточна роль, список ізольованих кімнат, активна кімната, JWT-токен).
@@ -5,16 +6,45 @@
  *    перенесення переможця у список «Переглянуто» та керування учасниками.
  * 3. Маршрутизація між головним екраном (HeroBanner + RoomsDashboard) та робочим простором (RoomWorkspace).
  */
+
+/** Додала тестовий екран перевірки теми*/
 export default function App() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#09090b] text-white">
-      <div className="rounded-2xl border border-white/10 bg-zinc-900/80 p-8 text-center">
-        <h1 className="text-3xl font-extrabold">
-          Kino<span className="text-rose-500">Vote</span>
-        </h1>
-        <p className="mt-2 text-sm text-zinc-400">
-          Структуру проєкту створено — усі модулі готові до наповнення
-        </p>
+    <div className="preview-layout">
+      <div className="preview-box">
+        <div className="preview-header">
+          <div className="brand-icon-box">
+            <Film size={20} />
+          </div>
+          <div>
+            <h1 className="brand-title">
+              Kino<span className="brand-accent">Vote</span>
+            </h1>
+            <p className="brand-subtitle">Усі стилі винесено в src/index.css</p>
+          </div>
+        </div>
+
+        <div className="preview-card">
+          <div className="preview-card-top">
+            <span className="preview-card-label">
+              <Sparkles size={14} />
+              Обводки та скляний ефект
+            </span>
+            <span className="badge-gold">
+              <Star size={12} /> 5.0
+            </span>
+          </div>
+          <p className="preview-card-text">
+            Вітаємо на нашому веб-застосунку Kino-Vote! 
+            Тут ви можете створювати кімнати для голосування за фільми, додавати фільми з TMDB, 
+            голосувати за улюблені та керувати учасниками. Насолоджуйтесь переглядом та обговоренням фільмів разом із друзями!
+          </p>
+        </div>
+
+        <div className="preview-status">
+          <ShieldCheck size={16} />
+          <span>CSS-архітектура налаштована</span>
+        </div>
       </div>
     </div>
   );
