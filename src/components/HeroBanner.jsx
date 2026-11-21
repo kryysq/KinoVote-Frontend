@@ -6,28 +6,17 @@
  * 3. Кнопка швидкого перегляду трейлера та ключові метрики платформи.
  */
 
-import { Plus, KeyRound, Play, Sparkles, Star } from 'lucide-react';
+import { Plus, KeyRound, Sparkles } from 'lucide-react';
 
 export default function HeroBanner() {
   return (
-    <section className="hero">
-      <img
-        src="https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg"
-        alt="Фон кінотеатру"
-        className="hero-bg"
-      />
-      <div className="hero-overlay-bottom" />
-      <div className="hero-overlay-left" />
-
+    <section id="top" className="hero">
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-badges">
             <span className="hero-tag">
               <Sparkles size={13} />
               Приватні кіновечори без повторів
-            </span>
-            <span className="badge-gold">
-              <Star size={12} /> TMDB 8.3
             </span>
           </div>
 
@@ -57,11 +46,6 @@ export default function HeroBanner() {
             <button type="button" className="btn-secondary">
               <KeyRound size={17} />
               <span>Увійти за кодом</span>
-            </button>
-
-            <button type="button" className="btn-ghost">
-              <Play size={15} />
-              <span>Трейлер</span>
             </button>
           </div>
         </div>

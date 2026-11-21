@@ -9,6 +9,7 @@ import { Film, Sparkles, ShieldCheck, Star } from 'lucide-react';
 
 import Navbar from './components/Navbar';
 import HeroBanner from './components/HeroBanner';
+import MovieShowcase from './components/MovieShowcase';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Navbar />
       <main>
         <HeroBanner />
+        <MovieShowcase />
       </main>
     </div>
   );
