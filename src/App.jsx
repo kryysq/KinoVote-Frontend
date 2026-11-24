@@ -11,15 +11,17 @@ import Navbar from './components/Navbar';
 import HeroBanner from './components/HeroBanner';
 import MovieShowcase from './components/MovieShowcase';
 import AuthModal from './components/AuthModal';
+import RoomModal from './components/RoomModal';
 
 export default function App() {
   const [authMode, setAuthMode] = useState(null);
+  const [roomModalMode, setRoomModalMode] = useState(null);
 
   return (
     <div className="app-shell">
       <Navbar onOpenAuth={setAuthMode} />
       <main>
-        <HeroBanner />
+        <HeroBanner onOpenRoomModal={setRoomModalMode} />
         <MovieShowcase />
       </main>
 
@@ -27,6 +29,12 @@ export default function App() {
         mode={authMode}
         onSwitchMode={setAuthMode}
         onClose={() => setAuthMode(null)}
+      />
+
+      <RoomModal
+        mode={roomModalMode}
+        onSwitchMode={setRoomModalMode}
+        onClose={() => setRoomModalMode(null)}
       />
     </div>
   );

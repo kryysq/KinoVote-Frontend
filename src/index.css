@@ -31,12 +31,7 @@
     @apply min-h-screen bg-[#09090b] text-zinc-100;
   }
 
-  
-<<<<<<< HEAD
   /* ======= Кнопки з підсвіткою при наведенні ======= */
-=======
-  /* Кнопуи з підсвіткою при наведенні */
->>>>>>> 226275299096e1634422fa8487f8f5bd35de404c
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-xl bg-rose-600 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-rose-500;
     box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.45);
@@ -66,11 +61,7 @@
     @apply text-rose-400;
   }
 
-<<<<<<< HEAD
   /* ================= Вікно входу й вкладки-повзунки ================= */
-=======
-  /* ================= AUTH MODAL & SLIDING TABS ================= */
->>>>>>> 226275299096e1634422fa8487f8f5bd35de404c
   .modal-backdrop {
     @apply fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-md;
     animation: backdropFadeIn 0.2s ease-out;
@@ -152,6 +143,10 @@
     @apply w-full bg-transparent text-sm text-white placeholder-zinc-500 outline-none;
   }
 
+  .form-input-code {
+    @apply font-semibold uppercase tracking-widest;
+  }
+
   .form-submit-btn {
     @apply mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-rose-600 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-rose-500;
     box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.5);
@@ -161,11 +156,7 @@
     box-shadow: 0 0 28px rgba(225, 29, 72, 0.75);
   }
 
-<<<<<<< HEAD
   /* ======= Бібліотека фільмів ======= */
-=======
-  /* Бібліотека фільмів */
->>>>>>> 226275299096e1634422fa8487f8f5bd35de404c
   .library-section {
     @apply mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8;
   }
@@ -360,8 +351,6 @@
     opacity: 1;
   }
 }
-<<<<<<< HEAD
-=======
 
 @keyframes modalPopIn {
   from {
@@ -373,7 +362,6 @@
     transform: translateY(0) scale(1);
   }
 }
->>>>>>> 226275299096e1634422fa8487f8f5bd35de404c
 
 @keyframes modalPopIn {
   from {

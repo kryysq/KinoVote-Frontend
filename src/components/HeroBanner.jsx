@@ -8,7 +8,7 @@
 
 import { Plus, KeyRound, Sparkles } from 'lucide-react';
 
-export default function HeroBanner() {
+export default function HeroBanner({ onOpenRoomModal }) {
   return (
     <section id="top" className="hero">
       <div className="hero-container">
@@ -38,12 +38,20 @@ export default function HeroBanner() {
           </p>
 
           <div className="hero-actions">
-            <button type="button" className="btn-primary">
+            <button
+              type="button"
+              className="btn-primary"
+              onClick={() => onOpenRoomModal('create')}
+            >
               <Plus size={18} />
               <span>Створити кімнату</span>
             </button>
 
-            <button type="button" className="btn-secondary">
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={() => onOpenRoomModal('join')}
+            >
               <KeyRound size={17} />
               <span>Увійти за кодом</span>
             </button>
