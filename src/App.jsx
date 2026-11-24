@@ -14,25 +14,67 @@ import AuthModal from './components/AuthModal';
 import RoomModal from './components/RoomModal';
 
 export default function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [authNotice, setAuthNotice] = useState('');
   const [authMode, setAuthMode] = useState(null);
   const [roomModalMode, setRoomModalMode] = useState(null);
 
+  const handleOpenAuth = (mode) => {
+    setAuthNotice('');
+    setAuthMode(mode);
+  };
+
+  const handleOpenRoomModal = (mode) => {
+    if (!currentUser) {
+      setAuthNotice(
+        mode === 'create'
+          ? 'Увійдіть або зареєструйтесь, щоб створити кімнату.'
+          : 'Увійдіть або зареєструйтесь, щоб приєднатися за кодом.'
+      );
+      setAuthMode('login');
+      return;
+    }
+
+    setRoomModalMode(mode);
+  };
+
+  const handleAuthSuccess = (userData) => {
+    setCurrentUser(userData);
+    setAuthMode(null);
+    setAuthNotice('');
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setRoomModalMode(null);
+  };
+
   return (
     <div className="app-shell">
-      <Navbar onOpenAuth={setAuthMode} />
+      <Navbar 
+      onOpenAuth={setAuthMode}
+      currentUser={currentUser}
+      onLogout={handleLogout}
+       />
       <main>
-        <HeroBanner onOpenRoomModal={setRoomModalMode} />
+        <HeroBanner onOpenRoomModal={handleOpenRoomModal} />
         <MovieShowcase />
       </main>
 
       <AuthModal
         mode={authMode}
         onSwitchMode={setAuthMode}
-        onClose={() => setAuthMode(null)}
+        notice={authNotice}
+        onAuthSuccess={handleAuthSuccess}
+        onClose={() => {
+          setAuthMode(null)
+          setAuthNotice('');
+        }}
       />
 
       <RoomModal
         mode={roomModalMode}
+        currentUser={currentUser}
         onSwitchMode={setRoomModalMode}
         onClose={() => setRoomModalMode(null)}
       />
