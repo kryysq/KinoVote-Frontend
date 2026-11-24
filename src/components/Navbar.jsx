@@ -1,6 +1,6 @@
 import { Film, Clapperboard, LogIn, UserPlus } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ onOpenAuth }) {
   return (
     <header className="navbar">
       <div className="navbar-inner">
@@ -21,12 +21,20 @@ export default function Navbar() {
         </div>
 
         <div className="navbar-auth-group">
-          <button type="button" className="btn-login">
+          <button
+            type="button"
+            className="btn-login"
+            onClick={() => onOpenAuth('login')}
+          >
             <LogIn size={15} />
             <span>Увійти</span>
           </button>
 
-          <button type="button" className="btn-register">
+          <button
+            type="button"
+            className="btn-register"
+            onClick={() => onOpenAuth('register')}
+          >
             <UserPlus size={15} />
             <span>Реєстрація</span>
           </button>
